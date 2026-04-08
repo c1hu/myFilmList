@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Cinema</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=DotGothic16&display=swap');
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface-hover: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e8e8e8;
+    --text-dim: #888;
+    --accent: #f5c518;
+    --accent-dim: #c49e10;
+    --sprocket: #1e1e1e;
+    --grain-opacity: 0.06;
+    --imdb: #f5c518;
+    --letterboxd: #00e054;
+    --douban: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Silkscreen', 'Press Start 2P', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: var(--grain-opacity);
+    pointer-events: none;
+    z-index: 9999;
+    animation: grainShift 0.4s steps(3) infinite;
+  }
+
+  @keyframes grainShift {
+    0% { transform: translate(0, 0); }
+    33% { transform: translate(-2px, 1px); }
+    66% { transform: translate(1px, -1px); }
+    100% { transform: translate(-1px, 2px); }
+  }
+
+  .sprocket-strip {
+    position: fixed;
+    top: 0;
+    width: 38px;
+    height: 100%;
+    background: var(--sprocket);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding-top: 12px;
+    overflow: hidden;
+  }
+  .sprocket-strip.left { left: 0; border-right: 2px solid #2a2a2a; }
+  .sprocket-strip.right { right: 0; border-left: 2px solid #2a2a2a; }
+  .sprocket-hole {
+    width: 18px;
+    height: 12px;
+    border-radius: 3px;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    flex-shrink: 0;
+  }
+
+  .main-wrap {
+    margin: 0 38px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    padding: 30px 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .site-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 22px;
+    color: var(--text);
+    letter-spacing: 3px;
+    line-height: 1.6;
+    text-shadow: 2px 2px 0 #000, 0 0 12px rgba(245,197,24,0.15);
+  }
+  .site-title .accent { color: var(--accent); }
+
+  .lang-toggle {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 4px;
+  }
+  .lang-btn {
+    background: transparent;
+    color: var(--text-dim);
+    border: none;
+    padding: 6px 14px;
+    font-family: 'Silkscreen', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+  }
+  .lang-btn.active {
+    background: var(--accent);
+    color: #000;
+  }
+  .lang-btn:hover:not(.active) {
+    background: var(--surface-hover);
+    color: var(--text);
+  }
+
+  nav {
+    display: flex;
+    gap: 0;
+    padding: 20px 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-tab {
+    background: transparent;
+    color: var(--text-dim);
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    position: relative;
+    transition: color 0.25s;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--accent); }
+  .nav-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  .content {
+    flex: 1;
+    padding: 36px 40px 60px;
+  }
+  .tab-panel { display: none; animation: fadeUp 0.4s ease; }
+  .tab-panel.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+  }
+
+  .about-text {
+    font-family: 'Silkscreen', monospace;
+    font-size: 14px;
+    line-height: 2.2;
+    color: var(--text);
+    max-width: 700px;
+  }
+  .about-text p { margin-bottom: 16px; }
+  .about-text .highlight { color: var(--accent); }
+
+  .douban-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px 22px;
+    font-family: 'Silkscreen', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    margin-top: 8px;
+  }
+  .douban-btn:hover {
+    border-color: #fff;
+    background: #111;
+    box-shadow: 0 0 12px rgba(255,255,255,0.08);
+  }
+  .douban-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+    flex-shrink: 0;
+  }
+
+  .film-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Silkscreen', monospace;
+    font-size: 12px;
+  }
+  .film-table th {
+    text-align: left;
+    color: var(--accent);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 10px 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .film-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #1a1a1a;
+    color: var(--text);
+    vertical-align: middle;
+  }
+  .film-row {
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .film-row:hover td { background: var(--surface); }
+  .film-row.has-review td:first-child {
+    position: relative;
+    padding-left: 28px;
+  }
+  .film-row.has-review td:first-child::before {
+    content: '▸';
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    font-size: 11px;
+    transition: transform 0.25s;
+  }
+  .film-row.expanded td:first-child::before {
+    transform: translateY(-50%) rotate(90deg);
+  }
+  .film-table .rating {
+    color: var(--accent);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+  }
+  .film-table .genre-tag {
+    display: inline-block;
+    background: #1a1a1a;
+    color: var(--text-dim);
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 10px;
+    margin: 1px 2px;
+  }
+
+  .ext-links {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .ext-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: all 0.2s;
+    opacity: 0.6;
+  }
+  .ext-link:hover {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+  .ext-link.imdb {
+    background: var(--imdb);
+    color: #000;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 5px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+  }
+  .ext-link.letterboxd {
+    background: transparent;
+    border: 1.5px solid var(--letterboxd);
+  }
+  .ext-link.letterboxd svg { width: 14px; height: 14px; }
+
+  .review-row td {
+    padding: 0 !important;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .review-expand {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+  }
+  .review-expand.open { max-height: 400px; }
+  .review-expand-inner { padding: 24px 30px; }
+  .review-expand-inner p {
+    font-family: 'Silkscreen', monospace;
+    font-size: 13px;
+    line-height: 2;
+    color: #ccc;
+  }
+  .review-expand-inner .review-rating {
+    margin-top: 14px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--accent);
+  }
+
+  .top-list {
+    list-style: none;
+    counter-reset: top;
+    max-width: 700px;
+  }
+  .top-item {
+    counter-increment: top;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid #1a1a1a;
+    transition: background 0.2s;
+  }
+  .top-item:hover {
+    background: var(--surface);
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .top-item::before {
+    content: counter(top, decimal-leading-zero);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: var(--accent);
+    min-width: 48px;
+  }
+  .top-item:nth-child(-n+3)::before {
+    text-shadow: 0 0 10px rgba(245,197,24,0.4);
+  }
+  .top-info { flex: 1; }
+  .top-info h4 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .top-info span {
+    font-family: 'Silkscreen', monospace;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .top-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  footer {
+    padding: 20px 40px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border);
+    font-family: 'Silkscreen', monospace;
+    letter-spacing: 1px;
+  }
+
+  .main-wrap::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 38px; right: 38px; bottom: 0;
+    background: repeating-linear-gradient(
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  @media (max-width: 768px) {
+    .sprocket-strip { width: 20px; }
+    .sprocket-hole { width: 10px; height: 7px; }
+    .main-wrap { margin: 0 20px; }
+    header { padding: 20px 16px 0; flex-direction: column; gap: 12px; }
+    .site-title { font-size: 14px; }
+    nav { padding: 14px 16px 0; flex-wrap: wrap; gap: 0; }
+    .nav-tab { padding: 10px 12px; font-size: 8px; }
+    .content { padding: 24px 16px 40px; }
+    .section-title { font-size: 11px; }
+    .film-table { font-size: 10px; }
+    .film-table th, .film-table td { padding: 8px 8px; }
+    .ext-link { width: 20px; height: 20px; }
+    .ext-link.imdb { font-size: 4px; }
+    .ext-link.letterboxd svg { width: 12px; height: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sprocket-strip left" id="sprocketsLeft"></div>
+<div class="sprocket-strip right" id="sprocketsRight"></div>
+
+<div class="main-wrap">
+  <header>
+    <div class="site-title">
+      <span class="accent">▶</span> MY <span class="accent">CINEMA</span>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
+      <button class="lang-btn" onclick="switchLang('en')">EN</button>
+    </div>
+  </header>
+
+  <nav id="mainNav">
+    <button class="nav-tab active" data-tab="about"   data-zh="关于我" data-en="About Me">关于我</button>
+    <button class="nav-tab"        data-tab="reviews" data-zh="影评" data-en="Reviews">影评</button>
+    <button class="nav-tab"        data-tab="top10"   data-zh="十佳" data-en="Top 10">十佳</button>
+  </nav>
+
+  <div class="content">
+
+    <div class="tab-panel active" id="panel-about">
+      <h2 class="section-title" data-zh="关于我" data-en="About Me">关于我</h2>
+      <div class="about-text">
+        <p data-zh="你好，我是Troy。" data-en="Hi, I'm Troy.">你好，我是Troy。</p>
+        <p data-zh="这个页面记录了我看过的电影，欢迎来到我的电影世界。"
+           data-en="This page documents the films I've watched and welcome to come to my cinema world.">
+          这个页面记录了我看过的电影，欢迎来到我的电影世界。
+        </p>
+        <p data-zh='📧 联系我：<span class="highlight">chuyuli96@gmail.com</span>'
+           data-en='📧 Contact me: <span class="highlight">chuyuli96@gmail.com</span>'>
+          📧 联系我：<span class="highlight">chuyuli96@gmail.com</span>
+        </p>
+        <p>
+          <a href="https://www.douban.com/people/83482941/" target="_blank" rel="noopener" class="douban-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 5h20v1.5H2V5zm1.5 3.5h17v8h-2.09l1.09 2.5h-2.18l-1.09-2.5H7.77l-1.09 2.5H4.5l1.09-2.5H3.5v-8zm2 1.5v5h13v-5h-13z"/></svg>
+            <span data-zh="我的豆瓣" data-en="My Douban">我的豆瓣</span>
+          </a>
+        </p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-reviews">
+      <h2 class="section-title" data-zh="影评" data-en="Reviews">影评</h2>
+      <table class="film-table" id="filmTable">
+        <thead>
+          <tr>
+            <th data-zh="片名" data-en="Title">片名</th>
+            <th data-zh="导演" data-en="Director">导演</th>
+            <th data-zh="年份" data-en="Year">年份</th>
+            <th data-zh="类型" data-en="Genre">类型</th>
+            <th data-zh="评分" data-en="Rating">评分</th>
+            <th data-zh="链接" data-en="Links">链接</th>
+          </tr>
+        </thead>
+        <tbody id="filmBody"></tbody>
+      </table>
+    </div>
+
+    <div class="tab-panel" id="panel-top10">
+      <h2 class="section-title" data-zh="我的十佳" data-en="My Top 10">我的十佳</h2>
+      <ol class="top-list" id="topList"></ol>
+    </div>
+
+  </div>
+
+  <footer>
+    <span data-zh="©MY CINEMA · 我们电影院见" data-en="©MY CINEMA · See you in the movie theater">©MY CINEMA · 我们电影院见</span>
+  </footer>
+</div>
+
+<script>
+  // ══════════════════════════════════════════════════
+  //  影评数据 — 只有这些会显示在「影评」选项卡中
+  //  Reviews data — only these show in the Reviews tab
+  // ══════════════════════════════════════════════════
+
+  const films = [
+    {
+      zh: '两生花', en: 'The Double Life of Véronique',
+      dirZh: '克日什托夫·基耶斯洛夫斯基', dirEn: 'Krzysztof Kieślowski',
+      year: 1991,
+      genreZh: ['剧情', '奇幻'], genreEn: ['Drama', 'Fantasy'],
+      rating: '★★★★★',
+      letterboxd: 'https://letterboxd.com/film/the-double-life-of-veronique/',
+      imdb: 'https://www.imdb.com/title/tt0101765/',
+      reviewZh: '基耶斯洛夫斯基用金色的光晕编织了一场关于灵魂共振的梦。两个维罗妮卡，一个在克拉科夫歌唱至死，一个在巴黎感受到了莫名的失落。影片不试图解释什么，它只是让你在离开影院之后，忽然觉得世界上某个角落也许有人正与你同频呼吸。',
+      reviewEn: 'Kieślowski weaves a dream of soul resonance in golden light. Two Véroniques — one sings to death in Kraków, the other feels an inexplicable loss in Paris. The film never tries to explain; it simply leaves you wondering if somewhere in the world, someone is breathing in sync with you.'
+    },
+    {
+      zh: '秘密与谎言', en: 'Secrets & Lies',
+      dirZh: '迈克·李', dirEn: 'Mike Leigh',
+      year: 1996,
+      genreZh: ['剧情'], genreEn: ['Drama'],
+      rating: '★★★★☆',
+      letterboxd: 'https://letterboxd.com/film/secrets-lies/',
+      imdb: 'https://www.imdb.com/title/tt0117589/',
+      reviewZh: '迈克·李最擅长的就是把日常生活拍出令人窒息的张力。那场生日聚会上真相揭开的长镜头，所有人的表演都精准得可怕。布兰达·布莱斯的哭戏不是在演，是在把一个女人二十年的沉默一次性倾倒出来。',
+      reviewEn: 'Mike Leigh excels at wringing suffocating tension from everyday life. The long take at the birthday party where truths unravel is terrifyingly precise in its performances. Brenda Blethyn\'s breakdown isn\'t acting — it\'s twenty years of silence pouring out of a woman all at once.'
+    },
+    {
+      zh: '星河战队', en: 'Starship Troopers',
+      dirZh: '保罗·范霍文', dirEn: 'Paul Verhoeven',
+      year: 1997,
+      genreZh: ['科幻', '动作'], genreEn: ['Sci-Fi', 'Action'],
+      rating: '★★★★☆',
+      letterboxd: 'https://letterboxd.com/film/starship-troopers/',
+      imdb: 'https://www.imdb.com/title/tt0120201/',
+      reviewZh: '范霍文把一部看似愚蠢的爆米花电影变成了一把锋利的手术刀。那些阳光灿烂的征兵广告、整齐划一的军礼、对英雄主义的狂热颂扬——越看越觉得不对劲，而这种不对劲正是范霍文要你感受的。讽刺得如此优雅，以至于很多人到今天还没看懂。',
+      reviewEn: 'Verhoeven turned what seems like a dumb popcorn flick into a razor-sharp scalpel. Those sun-drenched recruitment ads, the synchronized salutes, the frenzied celebration of heroism — the more you watch, the more something feels off. And that unease is exactly what Verhoeven wants. The satire is so elegant that many still haven\'t caught on.'
+    }
+  ];
+
+  // ══════════════════════════════════════════════════
+  //  十佳数据 — 独立于影评，只在「十佳」选项卡显示
+  //  Top 10 data — separate from reviews, shown only in Top 10 tab
+  // ══════════════════════════════════════════════════
+
+  const top10Films = [
+    {
+      zh: '穆赫兰道', en: 'Mulholland Drive',
+      dirZh: '大卫·林奇', dirEn: 'David Lynch', year: 2001,
+      letterboxd: 'https://letterboxd.com/film/mulholland-drive/',
+      imdb: 'https://www.imdb.com/title/tt0166924/'
+    },
+    {
+      zh: '蜂巢幽灵', en: 'The Spirit of the Beehive',
+      dirZh: '维克多·艾里斯', dirEn: 'Víctor Erice', year: 1973,
+      letterboxd: 'https://letterboxd.com/film/the-spirit-of-the-beehive/',
+      imdb: 'https://www.imdb.com/title/tt0069765/'
+    },
+    {
+      zh: '绝美之城', en: 'The Great Beauty',
+      dirZh: '保罗·索伦蒂诺', dirEn: 'Paolo Sorrentino', year: 2013,
+      letterboxd: 'https://letterboxd.com/film/the-great-beauty/',
+      imdb: 'https://www.imdb.com/title/tt2358891/'
+    },
+    {
+      zh: '现代启示录', en: 'Apocalypse Now',
+      dirZh: '弗朗西斯·福特·科波拉', dirEn: 'Francis Ford Coppola', year: 1979,
+      letterboxd: 'https://letterboxd.com/film/apocalypse-now/',
+      imdb: 'https://www.imdb.com/title/tt0078788/'
+    },
+    {
+      zh: '罗塞塔', en: 'Rosetta',
+      dirZh: '达内兄弟', dirEn: 'Dardenne Brothers', year: 1999,
+      letterboxd: 'https://letterboxd.com/film/rosetta/',
+      imdb: 'https://www.imdb.com/title/tt0200071/'
+    },
+    {
+      zh: '我是古巴', en: 'I Am Cuba',
+      dirZh: '米哈伊尔·卡拉托佐夫', dirEn: 'Mikhail Kalatozov', year: 1964,
+      letterboxd: 'https://letterboxd.com/film/i-am-cuba/',
+      imdb: 'https://www.imdb.com/title/tt0058604/'
+    },
+    {
+      zh: '皮囊之下', en: 'Under the Skin',
+      dirZh: '乔纳森·格雷泽', dirEn: 'Jonathan Glazer', year: 2013,
+      letterboxd: 'https://letterboxd.com/film/under-the-skin-2013/',
+      imdb: 'https://www.imdb.com/title/tt1441395/'
+    },
+    {
+      zh: '玩乐时间', en: 'Playtime',
+      dirZh: '雅克·塔蒂', dirEn: 'Jacques Tati', year: 1967,
+      letterboxd: 'https://letterboxd.com/film/playtime/',
+      imdb: 'https://www.imdb.com/title/tt0062136/'
+    },
+    {
+      zh: '白丝带', en: 'The White Ribbon',
+      dirZh: '迈克尔·哈内克', dirEn: 'Michael Haneke', year: 2009,
+      letterboxd: 'https://letterboxd.com/film/the-white-ribbon/',
+      imdb: 'https://www.imdb.com/title/tt1149362/'
+    },
+    {
+      zh: '生活的发现', en: 'Turning Gate',
+      dirZh: '洪常秀', dirEn: 'Hong Sang-soo', year: 2002,
+      letterboxd: 'https://letterboxd.com/film/turning-gate/',
+      imdb: 'https://www.imdb.com/title/tt0313550/'
+    }
+  ];
+
+  // ══════════════════════════════════════════════════
+  //  RENDER
+  // ══════════════════════════════════════════════════
+
+  let currentLang = 'zh';
+
+  function linkHTML(film) {
+    return `<span class="ext-links">
+      <a href="${film.letterboxd}" target="_blank" rel="noopener" class="ext-link letterboxd" title="Letterboxd">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="12" r="4" fill="none" stroke="#00e054" stroke-width="2"/>
+          <circle cx="16" cy="12" r="4" fill="none" stroke="#40bcf4" stroke-width="2"/>
+        </svg>
+      </a>
+      <a href="${film.imdb}" target="_blank" rel="noopener" class="ext-link imdb" title="IMDb">IMDb</a>
+    </span>`;
+  }
+
+  function renderFilmTable() {
+    const tbody = document.getElementById('filmBody');
+    tbody.innerHTML = '';
+    films.forEach((film, i) => {
+      const hasReview = film.reviewZh || film.reviewEn;
+      const genres = currentLang === 'zh' ? film.genreZh : film.genreEn;
+      const genreHTML = genres.map(g => `<span class="genre-tag">${g}</span>`).join('');
+      const title = currentLang === 'zh' ? film.zh : film.en;
+      const dir = currentLang === 'zh' ? film.dirZh : film.dirEn;
+
+      const tr = document.createElement('tr');
+      tr.className = 'film-row' + (hasReview ? ' has-review' : '');
+      tr.dataset.index = i;
+      tr.innerHTML = `
+        <td>${title}</td>
+        <td>${dir}</td>
+        <td>${film.year}</td>
+        <td>${genreHTML}</td>
+        <td class="rating">${film.rating}</td>
+        <td>${linkHTML(film)}</td>
+      `;
+      tbody.appendChild(tr);
+
+      if (hasReview) {
+        const reviewTr = document.createElement('tr');
+        reviewTr.className = 'review-row';
+        reviewTr.id = 'review-' + i;
+        const review = currentLang === 'zh' ? film.reviewZh : film.reviewEn;
+        reviewTr.innerHTML = `
+          <td colspan="6">
+            <div class="review-expand" id="expand-${i}">
+              <div class="review-expand-inner">
+                <p>${review}</p>
+                <div class="review-rating">${film.rating}</div>
+              </div>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(reviewTr);
+
+        tr.addEventListener('click', (e) => {
+          if (e.target.closest('a')) return;
+          document.getElementById('expand-' + i).classList.toggle('open');
+          tr.classList.toggle('expanded');
+        });
+      }
+    });
+  }
+
+  function renderTop10() {
+    const ol = document.getElementById('topList');
+    ol.innerHTML = '';
+    top10Films.forEach((film) => {
+      const li = document.createElement('li');
+      li.className = 'top-item';
+      const title = currentLang === 'zh' ? film.zh : film.en;
+      const dirShort = currentLang === 'zh'
+        ? film.dirZh.split('·').pop().trim()
+        : film.dirEn.split(' ').pop();
+      li.innerHTML = `
+        <div class="top-info">
+          <h4>${title}</h4>
+          <span>${dirShort} · ${film.year}</span>
+        </div>
+        <div class="top-links">${linkHTML(film)}</div>
+      `;
+      ol.appendChild(li);
+    });
+  }
+
+  // ── Sprocket Holes ──
+  function fillSprockets() {
+    const strips = document.querySelectorAll('.sprocket-strip');
+    const count = Math.ceil(window.innerHeight / 30);
+    strips.forEach(strip => {
+      strip.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        const hole = document.createElement('div');
+        hole.className = 'sprocket-hole';
+        strip.appendChild(hole);
+      }
+    });
+  }
+  fillSprockets();
+  window.addEventListener('resize', fillSprockets);
+
+  // ── Tab Navigation ──
+  const tabs = document.querySelectorAll('.nav-tab');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ── Language Switch ──
+  function switchLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.textContent.trim() === (lang === 'zh' ? '中文' : 'EN'));
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = val;
+      } else {
+        el.innerHTML = val;
+      }
+    });
+    renderFilmTable();
+    renderTop10();
+  }
+
+  // ── Initial Render ──
+  renderFilmTable();
+  renderTop10();
+</script>
+
+</body>
+</html>
