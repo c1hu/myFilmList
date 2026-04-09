@@ -121,14 +121,8 @@
     transition: all 0.2s;
     letter-spacing: 1px;
   }
-  .lang-btn.active {
-    background: var(--accent);
-    color: #000;
-  }
-  .lang-btn:hover:not(.active) {
-    background: var(--surface-hover);
-    color: var(--text);
-  }
+  .lang-btn.active { background: var(--accent); color: #000; }
+  .lang-btn:hover:not(.active) { background: var(--surface-hover); color: var(--text); }
 
   nav {
     display: flex;
@@ -160,10 +154,7 @@
     background: var(--accent);
   }
 
-  .content {
-    flex: 1;
-    padding: 36px 40px 60px;
-  }
+  .content { flex: 1; padding: 36px 40px 60px; }
   .tab-panel { display: none; animation: fadeUp 0.4s ease; }
   .tab-panel.active { display: block; }
 
@@ -180,355 +171,92 @@
     letter-spacing: 2px;
   }
 
-  .about-text {
-    font-family: 'Silkscreen', monospace;
-    font-size: 14px;
-    line-height: 2.2;
-    color: var(--text);
-    max-width: 700px;
-  }
+  .about-text { font-family: 'Silkscreen', monospace; font-size: 14px; line-height: 2.2; color: var(--text); max-width: 700px; }
   .about-text p { margin-bottom: 16px; }
   .about-text .highlight { color: var(--accent); }
 
   .douban-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #000;
-    color: #fff;
-    border: 1px solid #444;
-    padding: 10px 22px;
-    font-family: 'Silkscreen', monospace;
-    font-size: 12px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.25s;
-    margin-top: 8px;
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #000; color: #fff; border: 1px solid #444;
+    padding: 10px 22px; font-family: 'Silkscreen', monospace; font-size: 12px;
+    letter-spacing: 1px; cursor: pointer; text-decoration: none; transition: all 0.25s; margin-top: 8px;
   }
-  .douban-btn:hover {
-    border-color: #fff;
-    background: #111;
-    box-shadow: 0 0 12px rgba(255,255,255,0.08);
-  }
-  .douban-btn svg {
-    width: 16px;
-    height: 16px;
-    fill: #fff;
-    flex-shrink: 0;
-  }
+  .douban-btn:hover { border-color: #fff; background: #111; box-shadow: 0 0 12px rgba(255,255,255,0.08); }
+  .douban-btn svg { width: 16px; height: 16px; fill: #fff; flex-shrink: 0; }
 
-  .film-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Silkscreen', monospace;
-    font-size: 12px;
-  }
+  .film-table { width: 100%; border-collapse: collapse; font-family: 'Silkscreen', monospace; font-size: 12px; }
   .film-table th {
-    text-align: left;
-    color: var(--accent);
-    font-family: 'Press Start 2P', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-    padding: 10px 16px;
-    border-bottom: 2px solid var(--border);
+    text-align: left; color: var(--accent); font-family: 'Press Start 2P', monospace;
+    font-size: 9px; letter-spacing: 1px; padding: 10px 16px; border-bottom: 2px solid var(--border);
   }
-  .film-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid #1a1a1a;
-    color: var(--text);
-    vertical-align: middle;
-  }
-  .film-row {
-    cursor: pointer;
-    transition: background 0.2s;
-  }
+  .film-table td { padding: 12px 16px; border-bottom: 1px solid #1a1a1a; color: var(--text); vertical-align: middle; }
+  .film-row { cursor: pointer; transition: background 0.2s; }
   .film-row:hover td { background: var(--surface); }
-  .film-row.has-review td:first-child {
-    position: relative;
-    padding-left: 28px;
-  }
+  .film-row.has-review td:first-child { position: relative; padding-left: 28px; }
   .film-row.has-review td:first-child::before {
-    content: '▸';
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--accent);
-    font-size: 11px;
-    transition: transform 0.25s;
+    content: '\25B8'; position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--accent); font-size: 11px; transition: transform 0.25s;
   }
-  .film-row.expanded td:first-child::before {
-    transform: translateY(-50%) rotate(90deg);
-  }
-  .film-table .rating {
-    color: var(--accent);
-    font-family: 'Press Start 2P', monospace;
-    font-size: 10px;
-  }
+  .film-row.expanded td:first-child::before { transform: translateY(-50%) rotate(90deg); }
+  .film-table .rating { color: var(--accent); font-family: 'Press Start 2P', monospace; font-size: 10px; }
   .film-table .genre-tag {
-    display: inline-block;
-    background: #1a1a1a;
-    color: var(--text-dim);
-    padding: 2px 8px;
-    border-radius: 2px;
-    font-size: 10px;
-    margin: 1px 2px;
+    display: inline-block; background: #1a1a1a; color: var(--text-dim);
+    padding: 2px 8px; border-radius: 2px; font-size: 10px; margin: 1px 2px;
   }
 
-  .ext-links {
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-  }
+  .ext-links { display: inline-flex; gap: 8px; align-items: center; }
   .ext-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 3px;
-    text-decoration: none;
-    transition: all 0.2s;
-    opacity: 0.6;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 3px; text-decoration: none; transition: all 0.2s; opacity: 0.6;
   }
-  .ext-link:hover {
-    opacity: 1;
-    transform: scale(1.15);
-  }
-  .ext-link.imdb {
-    background: var(--imdb);
-    color: #000;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 5px;
-    font-weight: bold;
-    letter-spacing: -0.5px;
-  }
-  .ext-link.letterboxd {
-    background: transparent;
-    border: 1.5px solid var(--letterboxd);
-  }
+  .ext-link:hover { opacity: 1; transform: scale(1.15); }
+  .ext-link.imdb { background: var(--imdb); color: #000; font-family: 'Press Start 2P', monospace; font-size: 5px; font-weight: bold; letter-spacing: -0.5px; }
+  .ext-link.letterboxd { background: transparent; border: 1.5px solid var(--letterboxd); }
   .ext-link.letterboxd svg { width: 14px; height: 14px; }
 
-  .review-row td {
-    padding: 0 !important;
-    border-bottom: 1px solid #1a1a1a;
-  }
-  .review-expand {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
-    background: var(--surface);
-    border-left: 3px solid var(--accent);
-  }
-  .review-expand.open { max-height: 400px; }
+  .review-row td { padding: 0 !important; border-bottom: 1px solid #1a1a1a; }
+  .review-expand { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; background: var(--surface); border-left: 3px solid var(--accent); }
+  .review-expand.open { max-height: 600px; }
   .review-expand-inner { padding: 24px 30px; }
-  .review-expand-inner p {
-    font-family: 'Silkscreen', monospace;
-    font-size: 13px;
-    line-height: 2;
-    color: #ccc;
-  }
-  .review-expand-inner .review-rating {
-    margin-top: 14px;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 11px;
-    color: var(--accent);
-  }
+  .review-expand-inner p { font-family: 'Silkscreen', monospace; font-size: 13px; line-height: 2; color: #ccc; }
+  .review-expand-inner .review-rating { margin-top: 14px; font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--accent); }
 
-  .top-list {
-    list-style: none;
-    counter-reset: top;
-    max-width: 700px;
-  }
+  .top-list { list-style: none; counter-reset: top; max-width: 700px; }
   .top-item {
-    counter-increment: top;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 16px 0;
-    border-bottom: 1px solid #1a1a1a;
-    transition: background 0.2s;
+    counter-increment: top; display: flex; align-items: center; gap: 20px;
+    padding: 16px 0; border-bottom: 1px solid #1a1a1a; transition: background 0.2s;
   }
-  .top-item:hover {
-    background: var(--surface);
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .top-item::before {
-    content: counter(top, decimal-leading-zero);
-    font-family: 'Press Start 2P', monospace;
-    font-size: 16px;
-    color: var(--accent);
-    min-width: 48px;
-  }
-  .top-item:nth-child(-n+3)::before {
-    text-shadow: 0 0 10px rgba(245,197,24,0.4);
-  }
+  .top-item:hover { background: var(--surface); padding-left: 10px; padding-right: 10px; }
+  .top-item::before { content: counter(top, decimal-leading-zero); font-family: 'Press Start 2P', monospace; font-size: 16px; color: var(--accent); min-width: 48px; }
+  .top-item:nth-child(-n+3)::before { text-shadow: 0 0 10px rgba(245,197,24,0.4); }
   .top-info { flex: 1; }
-  .top-info h4 {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 11px;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-  .top-info span {
-    font-family: 'Silkscreen', monospace;
-    font-size: 12px;
-    color: var(--text-dim);
-  }
-  .top-links {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-    flex-shrink: 0;
-  }
+  .top-info h4 { font-family: 'Press Start 2P', monospace; font-size: 11px; color: var(--text); margin-bottom: 4px; }
+  .top-info span { font-family: 'Silkscreen', monospace; font-size: 12px; color: var(--text-dim); }
+  .top-links { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
 
-  /* ═══════════════════════════════════════════
-     STATS PANEL
-  ═══════════════════════════════════════════ */
+  /* STATS */
+  .stats-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 40px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); padding: 20px 16px; position: relative; overflow: hidden; }
+  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); opacity: 0.6; }
+  .stat-label { font-family: 'Press Start 2P', monospace; font-size: 8px; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 12px; line-height: 1.8; }
+  .stat-value { font-family: 'Press Start 2P', monospace; font-size: 20px; color: var(--accent); text-shadow: 0 0 16px rgba(245,197,24,0.25); }
+  .stat-sub { font-family: 'Silkscreen', monospace; font-size: 11px; color: var(--text-dim); margin-top: 6px; }
+  .stats-section-title { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--text-dim); letter-spacing: 2px; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
 
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
-    margin-bottom: 40px;
-  }
-  .stat-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 20px 16px;
-    position: relative;
-    overflow: hidden;
-  }
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--accent);
-    opacity: 0.6;
-  }
-  .stat-label {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 8px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    line-height: 1.8;
-  }
-  .stat-value {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 20px;
-    color: var(--accent);
-    text-shadow: 0 0 16px rgba(245,197,24,0.25);
-  }
-  .stat-sub {
-    font-family: 'Silkscreen', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
-    margin-top: 6px;
-  }
+  .dist-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .dist-label { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--accent); min-width: 28px; text-align: right; }
+  .dist-bar-wrap { flex: 1; height: 14px; background: #1a1a1a; position: relative; overflow: hidden; }
+  .dist-bar { height: 100%; background: var(--accent); opacity: 0.75; transition: width 0.8s cubic-bezier(0.23,1,0.32,1); position: relative; }
+  .dist-bar::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.2) 3px, rgba(0,0,0,0.2) 4px); }
+  .dist-count { font-family: 'Silkscreen', monospace; font-size: 11px; color: var(--text-dim); min-width: 40px; }
 
-  .stats-section-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 2px;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-  }
+  .chart-wrap { position: relative; width: 100%; margin-bottom: 36px; }
+  .chart-legend { display: flex; gap: 20px; margin-bottom: 12px; font-family: 'Silkscreen', monospace; font-size: 11px; color: var(--text-dim); }
+  .legend-dot { display: inline-block; width: 10px; height: 10px; margin-right: 5px; vertical-align: middle; }
 
-  /* distribution bar */
-  .dist-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-  .dist-label {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 9px;
-    color: var(--accent);
-    min-width: 28px;
-    text-align: right;
-  }
-  .dist-bar-wrap {
-    flex: 1;
-    height: 14px;
-    background: #1a1a1a;
-    position: relative;
-    overflow: hidden;
-  }
-  .dist-bar {
-    height: 100%;
-    background: var(--accent);
-    opacity: 0.75;
-    transition: width 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-    position: relative;
-  }
-  .dist-bar::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      90deg, transparent, transparent 3px,
-      rgba(0,0,0,0.2) 3px, rgba(0,0,0,0.2) 4px
-    );
-  }
-  .dist-count {
-    font-family: 'Silkscreen', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
-    min-width: 40px;
-  }
-
-  /* chart container */
-  .chart-wrap {
-    position: relative;
-    width: 100%;
-    margin-bottom: 36px;
-  }
-  .chart-legend {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 12px;
-    font-family: 'Silkscreen', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
-  }
-  .legend-dot {
-    display: inline-block;
-    width: 10px; height: 10px;
-    margin-right: 5px;
-    vertical-align: middle;
-  }
-
-  /* stats table */
-  .stats-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: 'Silkscreen', monospace;
-    font-size: 12px;
-    margin-top: 8px;
-  }
-  .stats-table th {
-    text-align: left;
-    color: var(--accent);
-    font-family: 'Press Start 2P', monospace;
-    font-size: 8px;
-    letter-spacing: 1px;
-    padding: 8px 12px;
-    border-bottom: 2px solid var(--border);
-    white-space: nowrap;
-  }
-  .stats-table td {
-    padding: 9px 12px;
-    border-bottom: 1px solid #161616;
-    color: var(--text);
-    vertical-align: middle;
-  }
+  .stats-table { width: 100%; border-collapse: collapse; font-family: 'Silkscreen', monospace; font-size: 12px; margin-top: 8px; }
+  .stats-table th { text-align: left; color: var(--accent); font-family: 'Press Start 2P', monospace; font-size: 8px; letter-spacing: 1px; padding: 8px 12px; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  .stats-table td { padding: 9px 12px; border-bottom: 1px solid #161616; color: var(--text); vertical-align: middle; }
   .stats-table tr:hover td { background: var(--surface); }
   .stats-table .num { text-align: right; font-size: 11px; }
   .stats-table .score-db { color: #3c8de8; }
@@ -536,68 +264,31 @@
   .gap-pos { color: #888; }
   .gap-neg { color: #e8913c; }
 
-  /* two-col layout for charts section */
-  .two-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 40px;
-  }
-  .col-block { }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 40px; }
+  .table-scroll { max-height: 440px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #333 #111; }
 
-  .table-scroll {
-    max-height: 440px;
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #333 #111;
-  }
-
-  footer {
-    padding: 20px 40px;
-    text-align: center;
-    font-size: 10px;
-    color: var(--text-dim);
-    border-top: 1px solid var(--border);
-    font-family: 'Silkscreen', monospace;
-    letter-spacing: 1px;
-  }
+  footer { padding: 20px 40px; text-align: center; font-size: 10px; color: var(--text-dim); border-top: 1px solid var(--border); font-family: 'Silkscreen', monospace; letter-spacing: 1px; }
 
   .main-wrap::after {
-    content: '';
-    position: fixed;
-    top: 0; left: 38px; right: 38px; bottom: 0;
-    background: repeating-linear-gradient(
-      transparent,
-      transparent 2px,
-      rgba(0,0,0,0.03) 2px,
-      rgba(0,0,0,0.03) 4px
-    );
-    pointer-events: none;
-    z-index: 100;
+    content: ''; position: fixed; top: 0; left: 38px; right: 38px; bottom: 0;
+    background: repeating-linear-gradient(transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+    pointer-events: none; z-index: 100;
   }
 
-  @media (max-width: 900px) {
-    .two-col { grid-template-columns: 1fr; }
-    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 768px) {
-    .sprocket-strip { width: 20px; }
-    .sprocket-hole { width: 10px; height: 7px; }
+    .sprocket-strip { width: 20px; } .sprocket-hole { width: 10px; height: 7px; }
     .main-wrap { margin: 0 20px; }
     header { padding: 20px 16px 0; flex-direction: column; gap: 12px; }
     .site-title { font-size: 14px; }
-    nav { padding: 14px 16px 0; flex-wrap: wrap; gap: 0; }
+    nav { padding: 14px 16px 0; flex-wrap: wrap; }
     .nav-tab { padding: 10px 12px; font-size: 8px; }
     .content { padding: 24px 16px 40px; }
     .section-title { font-size: 11px; }
-    .film-table { font-size: 10px; }
-    .film-table th, .film-table td { padding: 8px 8px; }
-    .ext-link { width: 20px; height: 20px; }
-    .ext-link.imdb { font-size: 4px; }
+    .film-table { font-size: 10px; } .film-table th, .film-table td { padding: 8px 8px; }
+    .ext-link { width: 20px; height: 20px; } .ext-link.imdb { font-size: 4px; }
     .ext-link.letterboxd svg { width: 12px; height: 12px; }
-    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .stat-value { font-size: 16px; }
+    .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stat-value { font-size: 16px; }
   }
 </style>
 </head>
@@ -608,377 +299,317 @@
 
 <div class="main-wrap">
   <header>
-    <div class="site-title">
-      <span class="accent">▶</span> MY <span class="accent">CINEMA</span>
-    </div>
+    <div class="site-title"><span class="accent">&#9654;</span> MY <span class="accent">CINEMA</span></div>
     <div class="lang-toggle">
-      <button class="lang-btn active" onclick="switchLang('zh')">中文</button>
-      <button class="lang-btn" onclick="switchLang('en')">EN</button>
+      <button class="lang-btn active" id="btnZh">&#20013;&#25991;</button>
+      <button class="lang-btn" id="btnEn">EN</button>
     </div>
   </header>
 
   <nav id="mainNav">
-    <button class="nav-tab active" data-tab="about"   data-zh="关于我"     data-en="About Me">关于我</button>
-    <button class="nav-tab"        data-tab="reviews" data-zh="影评"       data-en="Reviews">影评</button>
-    <button class="nav-tab"        data-tab="top10"   data-zh="十佳"       data-en="Top 10">十佳</button>
-    <button class="nav-tab"        data-tab="stats"   data-zh="豆瓣分析"   data-en="Douban Stats">豆瓣分析</button>
+    <button class="nav-tab active" data-tab="about"   data-zh="&#20851;&#20110;&#25105;" data-en="About Me">&#20851;&#20110;&#25105;</button>
+    <button class="nav-tab"        data-tab="reviews" data-zh="&#24433;&#35780;"         data-en="Reviews">&#24433;&#35780;</button>
+    <button class="nav-tab"        data-tab="top10"   data-zh="&#21313;&#20339;"         data-en="Top 10">&#21313;&#20339;</button>
+    <button class="nav-tab"        data-tab="stats"   data-zh="&#35910;&#29923;&#20998;&#26512;" data-en="Douban Stats">&#35910;&#29923;&#20998;&#26512;</button>
   </nav>
 
   <div class="content">
 
-    <!-- ── ABOUT ── -->
     <div class="tab-panel active" id="panel-about">
-      <h2 class="section-title" data-zh="关于我" data-en="About Me">关于我</h2>
+      <h2 class="section-title" data-zh="&#20851;&#20110;&#25105;" data-en="About Me">&#20851;&#20110;&#25105;</h2>
       <div class="about-text">
-        <p data-zh="你好，我是Troy。" data-en="Hi, I'm Troy.">你好，我是Troy。</p>
-        <p data-zh="这个页面记录了我看过的电影，欢迎来到我的电影世界。"
-           data-en="This page documents the films I've watched and welcome to my cinema world.">
-          这个页面记录了我看过的电影，欢迎来到我的电影世界。
+        <p data-zh="&#20320;&#22909;&#65292;&#25105;&#26159;Troy&#12290;" data-en="Hi, I'm Troy.">&#20320;&#22909;&#65292;&#25105;&#26159;Troy&#12290;</p>
+        <p data-zh="&#36825;&#20010;&#39029;&#38754;&#35760;&#24405;&#20102;&#25105;&#30475;&#36807;&#30340;&#30005;&#24433;&#65292;&#27426;&#36814;&#26469;&#21040;&#25105;&#30340;&#30005;&#24433;&#19990;&#30028;&#12290;"
+           data-en="This page documents the films I've watched. Welcome to my cinema world.">
+          &#36825;&#20010;&#39029;&#38754;&#35760;&#24405;&#20102;&#25105;&#30475;&#36807;&#30340;&#30005;&#24433;&#65292;&#27426;&#36814;&#26469;&#21040;&#25105;&#30340;&#30005;&#24433;&#19990;&#30028;&#12290;
         </p>
-        <p data-zh='📧 联系我：<span class="highlight">chuyuli96@gmail.com</span>'
-           data-en='📧 Contact me: <span class="highlight">chuyuli96@gmail.com</span>'>
-          📧 联系我：<span class="highlight">chuyuli96@gmail.com</span>
+        <p data-zh="&#128231; &#32852;&#31995;&#25105;&#65306;<span class='highlight'>chuyuli96@gmail.com</span>"
+           data-en="&#128231; Contact me: <span class='highlight'>chuyuli96@gmail.com</span>">
+          &#128231; &#32852;&#31995;&#25105;&#65306;<span class="highlight">chuyuli96@gmail.com</span>
         </p>
         <p>
           <a href="https://www.douban.com/people/83482941/" target="_blank" rel="noopener" class="douban-btn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 5h20v1.5H2V5zm1.5 3.5h17v8h-2.09l1.09 2.5h-2.18l-1.09-2.5H7.77l-1.09 2.5H4.5l1.09-2.5H3.5v-8zm2 1.5v5h13v-5h-13z"/></svg>
-            <span data-zh="我的豆瓣" data-en="My Douban">我的豆瓣</span>
+            <span data-zh="&#25105;&#30340;&#35910;&#29923;" data-en="My Douban">&#25105;&#30340;&#35910;&#29923;</span>
           </a>
         </p>
       </div>
     </div>
 
-    <!-- ── REVIEWS ── -->
     <div class="tab-panel" id="panel-reviews">
-      <h2 class="section-title" data-zh="影评" data-en="Reviews">影评</h2>
+      <h2 class="section-title" data-zh="&#24433;&#35780;" data-en="Reviews">&#24433;&#35780;</h2>
       <table class="film-table" id="filmTable">
-        <thead>
-          <tr>
-            <th data-zh="片名" data-en="Title">片名</th>
-            <th data-zh="导演" data-en="Director">导演</th>
-            <th data-zh="年份" data-en="Year">年份</th>
-            <th data-zh="类型" data-en="Genre">类型</th>
-            <th data-zh="评分" data-en="Rating">评分</th>
-            <th data-zh="链接" data-en="Links">链接</th>
-          </tr>
-        </thead>
+        <thead><tr>
+          <th data-zh="&#29255;&#21517;" data-en="Title">&#29255;&#21517;</th>
+          <th data-zh="&#23548;&#28436;" data-en="Director">&#23548;&#28436;</th>
+          <th data-zh="&#24180;&#20221;" data-en="Year">&#24180;&#20221;</th>
+          <th data-zh="&#31867;&#22411;" data-en="Genre">&#31867;&#22411;</th>
+          <th data-zh="&#35780;&#20998;" data-en="Rating">&#35780;&#20998;</th>
+          <th data-zh="&#38142;&#25509;" data-en="Links">&#38142;&#25509;</th>
+        </tr></thead>
         <tbody id="filmBody"></tbody>
       </table>
     </div>
 
-    <!-- ── TOP 10 ── -->
     <div class="tab-panel" id="panel-top10">
-      <h2 class="section-title" data-zh="我的十佳" data-en="My Top 10">我的十佳</h2>
+      <h2 class="section-title" data-zh="&#25105;&#30340;&#21313;&#20339;" data-en="My Top 10">&#25105;&#30340;&#21313;&#20339;</h2>
       <ol class="top-list" id="topList"></ol>
     </div>
 
-    <!-- ── STATS ── -->
     <div class="tab-panel" id="panel-stats">
-      <h2 class="section-title" data-zh="个人豆瓣分析" data-en="Douban Analysis">个人豆瓣分析</h2>
-
-      <!-- summary cards -->
+      <h2 class="section-title" data-zh="&#20010;&#20154;&#35910;&#29923;&#20998;&#26512;" data-en="Douban Analysis">&#20010;&#20154;&#35910;&#29923;&#20998;&#26512;</h2>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-label" data-zh="观影总量" data-en="Total Films">观影总量</div>
+          <div class="stat-label" data-zh="&#35266;&#24433;&#24635;&#37327;" data-en="Total Films">&#35266;&#24433;&#24635;&#37327;</div>
           <div class="stat-value">1712</div>
-          <div class="stat-sub" data-zh="部电影" data-en="films">部电影</div>
+          <div class="stat-sub" data-zh="&#37096;&#30005;&#24433;" data-en="films">&#37096;&#30005;&#24433;</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label" data-zh="已打分" data-en="Rated">已打分</div>
+          <div class="stat-label" data-zh="&#24050;&#25171;&#20998;" data-en="Rated">&#24050;&#25171;&#20998;</div>
           <div class="stat-value">1574</div>
           <div class="stat-sub">91.9%</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label" data-zh="豆瓣均分" data-en="Avg. Douban">豆瓣均分</div>
+          <div class="stat-label" data-zh="&#35910;&#29923;&#22343;&#20998;" data-en="Avg. Douban">&#35910;&#29923;&#22343;&#20998;</div>
           <div class="stat-value">8.06</div>
-          <div class="stat-sub" data-zh="/ 10分制" data-en="/ 10">/10</div>
+          <div class="stat-sub">/10</div>
         </div>
         <div class="stat-card">
-          <div class="stat-label" data-zh="我的均分 (×2)" data-en="My Avg. (×2)">我的均分 (×2)</div>
+          <div class="stat-label" data-zh="&#25105;&#30340;&#22343;&#20998; (x2)" data-en="My Avg. (x2)">&#25105;&#30340;&#22343;&#20998; (x2)</div>
           <div class="stat-value">6.80</div>
-          <div class="stat-sub" data-zh="/ 10分制换算" data-en="/ 10 scaled">/10 换算</div>
+          <div class="stat-sub" data-zh="/ 10&#20998;&#21046;&#25442;&#31639;" data-en="/ 10 scaled">/ 10 &#25442;&#31639;</div>
         </div>
       </div>
 
-      <!-- two-col: distribution + chart -->
       <div class="two-col">
         <div class="col-block">
-          <div class="stats-section-title" data-zh="我的评分分布" data-en="My Score Distribution">我的评分分布</div>
+          <div class="stats-section-title" data-zh="&#25105;&#30340;&#35780;&#20998;&#20998;&#24067;" data-en="My Score Distribution">&#25105;&#30340;&#35780;&#20998;&#20998;&#24067;</div>
           <div id="distBars"></div>
         </div>
         <div class="col-block">
-          <div class="stats-section-title" data-zh="主要制片国评分对比（影片数≥10）" data-en="Scores by Country (n≥10)">主要制片国评分对比</div>
+          <div class="stats-section-title" data-zh="&#20027;&#35201;&#21046;&#29255;&#22269;&#35780;&#20998;&#23545;&#27604;&#65288;&#24433;&#29255;&#25968;&#8805;10&#65289;" data-en="Scores by Country (n>=10)">&#20027;&#35201;&#21046;&#29255;&#22269;&#35780;&#20998;&#23545;&#27604;</div>
           <div class="chart-legend">
-            <span><span class="legend-dot" style="background:#3c8de8;"></span><span data-zh="豆瓣均分" data-en="Douban avg">豆瓣均分</span></span>
-            <span><span class="legend-dot" style="background:#f5c518;"></span><span data-zh="我的均分(×2)" data-en="My avg(×2)">我的均分(×2)</span></span>
+            <span><span class="legend-dot" style="background:#3c8de8;"></span><span data-zh="&#35910;&#29923;&#22343;&#20998;" data-en="Douban avg">&#35910;&#29923;&#22343;&#20998;</span></span>
+            <span><span class="legend-dot" style="background:#f5c518;"></span><span data-zh="&#25105;&#30340;&#22343;&#20998;(x2)" data-en="My avg(x2)">&#25105;&#30340;&#22343;&#20998;(x2)</span></span>
           </div>
           <div class="chart-wrap" style="height:340px;">
-            <canvas id="countryChart" role="img" aria-label="各制片国豆瓣评分与我的评分均值对比柱状图"></canvas>
+            <canvas id="countryChart" role="img" aria-label="Country score comparison chart"></canvas>
           </div>
         </div>
       </div>
 
-      <!-- full table -->
-      <div class="stats-section-title" data-zh="完整分国统计表" data-en="Full Country Breakdown">完整分国统计表</div>
+      <div class="stats-section-title" data-zh="&#23436;&#25972;&#20998;&#22269;&#32479;&#35745;&#34920;" data-en="Full Country Breakdown">&#23436;&#25972;&#20998;&#22269;&#32479;&#35745;&#34920;</div>
       <div class="table-scroll">
         <table class="stats-table" id="statsTable">
-          <thead>
-            <tr>
-              <th data-zh="国家/地区" data-en="Country">国家/地区</th>
-              <th class="num" data-zh="影片数" data-en="Films">影片数</th>
-              <th class="num" data-zh="豆瓣均分" data-en="Douban avg">豆瓣均分</th>
-              <th class="num" data-zh="我的均分(×2)" data-en="My avg(×2)">我的均分(×2)</th>
-              <th class="num" data-zh="分差" data-en="Gap">分差</th>
-            </tr>
-          </thead>
+          <thead><tr>
+            <th id="thCountry">&#22269;&#23478;/&#22320;&#21306;</th>
+            <th class="num" id="thFilms">&#24433;&#29255;&#25968;</th>
+            <th class="num" id="thDb">&#35910;&#29923;&#22343;&#20998;</th>
+            <th class="num" id="thMe">&#25105;&#30340;&#22343;&#20998;(x2)</th>
+            <th class="num" id="thGap">&#20998;&#24046;</th>
+          </tr></thead>
           <tbody id="statsBody"></tbody>
         </table>
       </div>
+    </div>
 
-    </div><!-- /panel-stats -->
-
-  </div><!-- /content -->
+  </div>
 
   <footer>
-    <span data-zh="©MY CINEMA · 我们电影院见" data-en="©MY CINEMA · See you in the movie theater">©MY CINEMA · 我们电影院见</span>
+    <span data-zh="&#169;MY CINEMA &#183; &#25105;&#20204;&#30005;&#24433;&#38498;&#35265;" data-en="&#169;MY CINEMA &#183; See you in the movie theater">&#169;MY CINEMA &#183; &#25105;&#20204;&#30005;&#24433;&#38498;&#35265;</span>
   </footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-  // ══════════════════════════════════════════════════
-  //  影评数据
-  // ══════════════════════════════════════════════════
-  const films = [
+(function() {
+  // ── Data ──
+  var films = [
     {
-      zh: '两生花', en: 'The Double Life of Véronique',
-      dirZh: '克日什托夫·基耶斯洛夫斯基', dirEn: 'Krzysztof Kieślowski',
-      year: 1991,
-      genreZh: ['剧情', '奇幻'], genreEn: ['Drama', 'Fantasy'],
-      rating: '★★★★★',
-      letterboxd: 'https://letterboxd.com/film/the-double-life-of-veronique/',
-      imdb: 'https://www.imdb.com/title/tt0101765/',
-      reviewZh: '基耶斯洛夫斯基用金色的光晕编织了一场关于灵魂共振的梦。两个维罗妮卡，一个在克拉科夫歌唱至死，一个在巴黎感受到了莫名的失落。影片不试图解释什么，它只是让你在离开影院之后，忽然觉得世界上某个角落也许有人正与你同频呼吸。',
-      reviewEn: 'Kieślowski weaves a dream of soul resonance in golden light. Two Véroniques — one sings to death in Kraków, the other feels an inexplicable loss in Paris. The film never tries to explain; it simply leaves you wondering if somewhere in the world, someone is breathing in sync with you.'
+      zh:'\u4e24\u751f\u82b1', en:'The Double Life of V\u00e9ronique',
+      dirZh:'\u514b\u65e5\u4ec0\u6258\u592b\u00b7\u57fa\u8036\u65af\u6d1b\u592b\u65af\u57fa', dirEn:'Krzysztof Kie\u015blowski',
+      year:1991, genreZh:['\u5267\u60c5','\u5947\u5e7b'], genreEn:['Drama','Fantasy'],
+      rating:'\u2605\u2605\u2605\u2605\u2605',
+      letterboxd:'https://letterboxd.com/film/the-double-life-of-veronique/',
+      imdb:'https://www.imdb.com/title/tt0101765/',
+      reviewZh:'\u57fa\u8036\u65af\u6d1b\u592b\u65af\u57fa\u7528\u91d1\u8272\u7684\u5149\u6655\u7f16\u7ec7\u4e86\u4e00\u573a\u5173\u4e8e\u7075\u9b42\u5171\u632f\u7684\u68a6\u3002\u4e24\u4e2a\u7ef4\u7f57\u59ae\u5361\uff0c\u4e00\u4e2a\u5728\u514b\u62c9\u79d1\u592b\u6b4c\u5531\u81f3\u6b7b\uff0c\u4e00\u4e2a\u5728\u5df4\u9ece\u611f\u53d7\u5230\u4e86\u83ab\u540d\u7684\u5931\u843d\u3002\u5f71\u7247\u4e0d\u8bd5\u56fe\u89e3\u91ca\u4ec0\u4e48\uff0c\u5b83\u53ea\u662f\u8ba9\u4f60\u5728\u79bb\u5f00\u5f71\u9662\u4e4b\u540e\uff0c\u5ffd\u7136\u89c9\u5f97\u4e16\u754c\u4e0a\u67d0\u4e2a\u89d2\u843d\u4e5f\u8bb8\u6709\u4eba\u6b63\u4e0e\u4f60\u540c\u9891\u547c\u5438\u3002',
+      reviewEn:'Kie\u015blowski weaves a dream of soul resonance in golden light. Two V\u00e9roniques \u2014 one sings to death in Krak\u00f3w, the other feels an inexplicable loss in Paris. The film never tries to explain; it simply leaves you wondering if somewhere in the world, someone is breathing in sync with you.'
     },
     {
-      zh: '秘密与谎言', en: 'Secrets & Lies',
-      dirZh: '迈克·李', dirEn: 'Mike Leigh',
-      year: 1996,
-      genreZh: ['剧情'], genreEn: ['Drama'],
-      rating: '★★★★☆',
-      letterboxd: 'https://letterboxd.com/film/secrets-lies/',
-      imdb: 'https://www.imdb.com/title/tt0117589/',
-      reviewZh: '迈克·李最擅长的就是把日常生活拍出令人窒息的张力。那场生日聚会上真相揭开的长镜头，所有人的表演都精准得可怕。布兰达·布莱斯的哭戏不是在演，是在把一个女人二十年的沉默一次性倾倒出来。',
-      reviewEn: 'Mike Leigh excels at wringing suffocating tension from everyday life. The long take at the birthday party where truths unravel is terrifyingly precise in its performances. Brenda Blethyn\'s breakdown isn\'t acting — it\'s twenty years of silence pouring out of a woman all at once.'
+      zh:'\u79d8\u5bc6\u4e0e\u8c0e\u8a00', en:'Secrets & Lies',
+      dirZh:'\u8fc8\u514b\u00b7\u674e', dirEn:'Mike Leigh',
+      year:1996, genreZh:['\u5267\u60c5'], genreEn:['Drama'],
+      rating:'\u2605\u2605\u2605\u2605\u2606',
+      letterboxd:'https://letterboxd.com/film/secrets-lies/',
+      imdb:'https://www.imdb.com/title/tt0117589/',
+      reviewZh:'\u8fc8\u514b\u00b7\u674e\u6700\u64c5\u957f\u7684\u5c31\u662f\u628a\u65e5\u5e38\u751f\u6d3b\u62cd\u51fa\u4ee4\u4eba\u7a92\u606f\u7684\u5f20\u529b\u3002\u90a3\u573a\u751f\u65e5\u805a\u4f1a\u4e0a\u771f\u76f8\u63ed\u5f00\u7684\u957f\u955c\u5934\uff0c\u6240\u6709\u4eba\u7684\u8868\u6f14\u90fd\u7cbe\u51c6\u5f97\u53ef\u6015\u3002\u5e03\u5170\u8fbe\u00b7\u5e03\u83b1\u65af\u7684\u54ed\u621f\u4e0d\u662f\u5728\u6f14\uff0c\u662f\u5728\u628a\u4e00\u4e2a\u5973\u4eba\u4e8c\u5341\u5e74\u7684\u6c89\u9ed8\u4e00\u6b21\u6027\u5012\u5012\u51fa\u6765\u3002',
+      reviewEn:"Mike Leigh excels at wringing suffocating tension from everyday life. The long take at the birthday party where truths unravel is terrifyingly precise in its performances. Brenda Blethyn's breakdown isn't acting \u2014 it's twenty years of silence pouring out of a woman all at once."
     },
     {
-      zh: '星河战队', en: 'Starship Troopers',
-      dirZh: '保罗·范霍文', dirEn: 'Paul Verhoeven',
-      year: 1997,
-      genreZh: ['科幻', '动作'], genreEn: ['Sci-Fi', 'Action'],
-      rating: '★★★★☆',
-      letterboxd: 'https://letterboxd.com/film/starship-troopers/',
-      imdb: 'https://www.imdb.com/title/tt0120201/',
-      reviewZh: `1959年美国科幻大师海因莱因的代表作品——《星船伞兵》一经问世便因其"宣扬法西斯主义"遭到大量批评。而快40年后，在好莱坞颇有地位的范霍文却将决定其电影化。保罗范霍文幼时亲历二战，童年的经历使他对纳粹符号和强权崇拜充满兴趣，在他的诸多作品中都有过明显的体现。这自然会招来一些评论者的批评，被扣上"宣扬纳粹"的帽子，但也说明了范霍文会对这本小说的主题着迷的原因。\n\n在不少观众和影评人对本片意识形态猛烈的抨击下，这部投资高达1亿美元的电影最终以票房惨败告终。那么本片到底是在宣扬还是在暗讽法西斯主义呢？这并不容易去评判。但如果深入到电影本身，它以一种全新且高明的方式讲述了纳粹的运作方式。整部电影的剧情推进方式是十分好莱坞式的，角色在设置上和转变上也和通常的商业大片十分类似，所以很容易变将它看作为一部庸俗的爆米花电影。但实际如果稍微仔细一看，便会发现这诸多看似不能更套路的剧情其实巧妙地服从于整个主题，并由此引申出一种与通常好莱坞大片截然不同的意味，从而达成某种似乎是反讽的效果。`,
-      reviewEn: `In 1959, the American science fiction master Robert A. Heinlein published his representative work Starship Troopers, which immediately drew widespread criticism for its alleged "promotion of fascism." Nearly forty years later, however, the well-established Hollywood director Paul Verhoeven decided to adapt it into a film.\n\nHaving experienced World War II firsthand as a child, Verhoeven developed a lasting fascination with Nazi symbolism and the worship of authoritarian power. Amid fierce ideological criticism from both audiences and critics, this $100 million production ultimately ended in a box office failure. So does the film promote fascism, or does it satirize it? This is not an easy question to answer. However, if we look closely at the film itself, it presents the mechanisms of Nazism in a strikingly original and sophisticated way.`
+      zh:'\u661f\u6cb3\u6218\u961f', en:'Starship Troopers',
+      dirZh:'\u4fdd\u7f57\u00b7\u8303\u970d\u6587', dirEn:'Paul Verhoeven',
+      year:1997, genreZh:['\u79d1\u5e7b','\u52a8\u4f5c'], genreEn:['Sci-Fi','Action'],
+      rating:'\u2605\u2605\u2605\u2605\u2606',
+      letterboxd:'https://letterboxd.com/film/starship-troopers/',
+      imdb:'https://www.imdb.com/title/tt0120201/',
+      reviewZh:'1959\u5e74\u7f8e\u56fd\u79d1\u5e7b\u5927\u5e08\u6d77\u56e0\u83b1\u56e0\u7684\u4ee3\u8868\u4f5c\u54c1\u2014\u2014\u300a\u661f\u8239\u4f1e\u5175\u300b\u4e00\u7ecf\u95ee\u4e16\u4fbf\u56e0\u5176\u201c\u5ba3\u626c\u6cd5\u897f\u65af\u4e3b\u4e49\u201d\u9047\u5230\u5927\u91cf\u6279\u8bc4\u3002\u800c\u5feb40\u5e74\u540e\uff0c\u8303\u970d\u6587\u5374\u5c06\u5176\u7535\u5f71\u5316\u3002\u8fd9\u4e0d\u4ec5\u4ec5\u662f\u4e00\u90e8\u7206\u7c73\u82b1\u7535\u5f71\uff0c\u5b83\u5728\u6ee1\u8db3\u5546\u4e1a\u6027\u7684\u540c\u65f6\uff0c\u5de7\u5999\u5b8c\u6210\u4e86\u4f5c\u8005\u79c1\u4eba\u7684\u8868\u8fbe\u3002',
+      reviewEn:"In 1959, Heinlein published Starship Troopers, immediately drawing criticism for alleged fascism. Nearly forty years later, Paul Verhoeven adapted it. Having witnessed WWII as a child, Verhoeven was fascinated by Nazi symbolism. Amid fierce criticism, this $100M production became a box office failure. Yet it presents Nazism's mechanisms in an original, sophisticated way \u2014 far more than popcorn cinema."
     }
   ];
 
-  // ══════════════════════════════════════════════════
-  //  十佳数据
-  // ══════════════════════════════════════════════════
-  const top10Films = [
-    { zh: '穆赫兰道', en: 'Mulholland Drive', dirZh: '大卫·林奇', dirEn: 'David Lynch', year: 2001, letterboxd: 'https://letterboxd.com/film/mulholland-drive/', imdb: 'https://www.imdb.com/title/tt0166924/' },
-    { zh: '蜂巢幽灵', en: 'The Spirit of the Beehive', dirZh: '维克多·艾里斯', dirEn: 'Víctor Erice', year: 1973, letterboxd: 'https://letterboxd.com/film/the-spirit-of-the-beehive/', imdb: 'https://www.imdb.com/title/tt0069765/' },
-    { zh: '绝美之城', en: 'The Great Beauty', dirZh: '保罗·索伦蒂诺', dirEn: 'Paolo Sorrentino', year: 2013, letterboxd: 'https://letterboxd.com/film/the-great-beauty/', imdb: 'https://www.imdb.com/title/tt2358891/' },
-    { zh: '现代启示录', en: 'Apocalypse Now', dirZh: '弗朗西斯·福特·科波拉', dirEn: 'Francis Ford Coppola', year: 1979, letterboxd: 'https://letterboxd.com/film/apocalypse-now/', imdb: 'https://www.imdb.com/title/tt0078788/' },
-    { zh: '罗塞塔', en: 'Rosetta', dirZh: '达内兄弟', dirEn: 'Dardenne Brothers', year: 1999, letterboxd: 'https://letterboxd.com/film/rosetta/', imdb: 'https://www.imdb.com/title/tt0200071/' },
-    { zh: '我是古巴', en: 'I Am Cuba', dirZh: '米哈伊尔·卡拉托佐夫', dirEn: 'Mikhail Kalatozov', year: 1964, letterboxd: 'https://letterboxd.com/film/i-am-cuba/', imdb: 'https://www.imdb.com/title/tt0058604/' },
-    { zh: '皮囊之下', en: 'Under the Skin', dirZh: '乔纳森·格雷泽', dirEn: 'Jonathan Glazer', year: 2013, letterboxd: 'https://letterboxd.com/film/under-the-skin-2013/', imdb: 'https://www.imdb.com/title/tt1441395/' },
-    { zh: '玩乐时间', en: 'Playtime', dirZh: '雅克·塔蒂', dirEn: 'Jacques Tati', year: 1967, letterboxd: 'https://letterboxd.com/film/playtime/', imdb: 'https://www.imdb.com/title/tt0062136/' },
-    { zh: '白丝带', en: 'The White Ribbon', dirZh: '迈克尔·哈内克', dirEn: 'Michael Haneke', year: 2009, letterboxd: 'https://letterboxd.com/film/the-white-ribbon/', imdb: 'https://www.imdb.com/title/tt1149362/' },
-    { zh: '生活的发现', en: 'Turning Gate', dirZh: '洪常秀', dirEn: 'Hong Sang-soo', year: 2002, letterboxd: 'https://letterboxd.com/film/turning-gate/', imdb: 'https://www.imdb.com/title/tt0313550/' }
+  var top10Films = [
+    {zh:'\u7a46\u8d6b\u5170\u9053', en:'Mulholland Drive', dirZh:'\u5927\u536b\u00b7\u6797\u5947', dirEn:'David Lynch', year:2001, letterboxd:'https://letterboxd.com/film/mulholland-drive/', imdb:'https://www.imdb.com/title/tt0166924/'},
+    {zh:'\u8702\u5de2\u5e7d\u7075', en:'The Spirit of the Beehive', dirZh:'\u7ef4\u514b\u591a\u00b7\u827e\u91cc\u65af', dirEn:'V\u00edctor Erice', year:1973, letterboxd:'https://letterboxd.com/film/the-spirit-of-the-beehive/', imdb:'https://www.imdb.com/title/tt0069765/'},
+    {zh:'\u7edd\u7f8e\u4e4b\u57ce', en:'The Great Beauty', dirZh:'\u4fdd\u7f57\u00b7\u7d22\u4f26\u8482\u8bfa', dirEn:'Paolo Sorrentino', year:2013, letterboxd:'https://letterboxd.com/film/the-great-beauty/', imdb:'https://www.imdb.com/title/tt2358891/'},
+    {zh:'\u73b0\u4ee3\u542f\u793a\u5f55', en:'Apocalypse Now', dirZh:'\u5f17\u6717\u897f\u65af\u00b7\u798f\u7279\u00b7\u79d1\u6ce2\u62c9', dirEn:'Francis Ford Coppola', year:1979, letterboxd:'https://letterboxd.com/film/apocalypse-now/', imdb:'https://www.imdb.com/title/tt0078788/'},
+    {zh:'\u7f57\u585e\u5854', en:'Rosetta', dirZh:'\u8fbe\u5185\u5144\u5f1f', dirEn:'Dardenne Brothers', year:1999, letterboxd:'https://letterboxd.com/film/rosetta/', imdb:'https://www.imdb.com/title/tt0200071/'},
+    {zh:'\u6211\u662f\u53e4\u5df4', en:'I Am Cuba', dirZh:'\u7c73\u54c8\u4f0a\u5c14\u00b7\u5361\u62c9\u6258\u4f50\u592b', dirEn:'Mikhail Kalatozov', year:1964, letterboxd:'https://letterboxd.com/film/i-am-cuba/', imdb:'https://www.imdb.com/title/tt0058604/'},
+    {zh:'\u76ae\u56ca\u4e4b\u4e0b', en:'Under the Skin', dirZh:'\u4e54\u7eb3\u68ee\u00b7\u683c\u96f7\u6cfd', dirEn:'Jonathan Glazer', year:2013, letterboxd:'https://letterboxd.com/film/under-the-skin-2013/', imdb:'https://www.imdb.com/title/tt1441395/'},
+    {zh:'\u73a9\u4e50\u65f6\u95f4', en:'Playtime', dirZh:'\u96c5\u514b\u00b7\u5854\u8482', dirEn:'Jacques Tati', year:1967, letterboxd:'https://letterboxd.com/film/playtime/', imdb:'https://www.imdb.com/title/tt0062136/'},
+    {zh:'\u767d\u4e1d\u5e26', en:'The White Ribbon', dirZh:'\u8fc8\u514b\u5c14\u00b7\u54c8\u5185\u514b', dirEn:'Michael Haneke', year:2009, letterboxd:'https://letterboxd.com/film/the-white-ribbon/', imdb:'https://www.imdb.com/title/tt1149362/'},
+    {zh:'\u751f\u6d3b\u7684\u53d1\u73b0', en:'Turning Gate', dirZh:'\u6d2a\u5e38\u79c0', dirEn:'Hong Sang-soo', year:2002, letterboxd:'https://letterboxd.com/film/turning-gate/', imdb:'https://www.imdb.com/title/tt0313550/'}
   ];
 
-  // ══════════════════════════════════════════════════
-  //  豆瓣分析数据 (pandas 计算结果, 我的评分已×2换算)
-  // ══════════════════════════════════════════════════
-  const statsData = [
-    {c:"美国",n:612,db:8.09,me:6.80},{c:"日本",n:217,db:8.50,me:6.70},
-    {c:"法国",n:203,db:7.98,me:6.99},{c:"英国",n:116,db:8.20,me:6.72},
-    {c:"中国大陆",n:110,db:7.63,me:5.98},{c:"意大利",n:46,db:8.11,me:7.05},
-    {c:"中国香港",n:39,db:8.27,me:6.70},{c:"韩国",n:36,db:7.95,me:7.14},
-    {c:"苏联",n:29,db:8.69,me:7.15},{c:"中国台湾",n:25,db:8.01,me:7.81},
-    {c:"瑞典",n:24,db:8.11,me:7.30},{c:"西班牙",n:23,db:8.06,me:7.39},
-    {c:"加拿大",n:22,db:7.42,me:6.20},{c:"德国",n:22,db:8.12,me:6.76},
-    {c:"波兰",n:16,db:8.14,me:7.00},{c:"西德",n:12,db:8.48,me:8.40},
-    {c:"丹麦",n:12,db:7.73,me:6.55},{c:"伊朗",n:10,db:8.38,me:6.20},
-    {c:"澳大利亚",n:10,db:7.77,me:7.20},{c:"芬兰",n:9,db:8.06,me:7.33},
-    {c:"捷克斯洛伐克",n:9,db:8.56,me:6.57},{c:"爱尔兰",n:8,db:7.72,me:6.75},
-    {c:"比利时",n:8,db:7.85,me:7.50},{c:"泰国",n:7,db:8.04,me:6.00},
-    {c:"阿根廷",n:7,db:8.24,me:7.00},{c:"匈牙利",n:6,db:8.28,me:7.00},
-    {c:"荷兰",n:6,db:7.47,me:6.50},{c:"奥地利",n:6,db:7.53,me:6.67},
-    {c:"印度",n:6,db:8.25,me:6.67},{c:"新西兰",n:4,db:8.15,me:6.50},
-    {c:"希腊",n:4,db:8.38,me:8.00},{c:"墨西哥",n:4,db:7.92,me:6.00},
-    {c:"葡萄牙",n:3,db:6.63,me:4.67},{c:"瑞士",n:3,db:8.00,me:8.00},
-    {c:"菲律宾",n:3,db:7.23,me:4.67},{c:"哥伦比亚",n:2,db:7.75,me:7.00},
-    {c:"南非",n:2,db:9.00,me:5.00},{c:"南斯拉夫",n:2,db:8.85,me:7.00},
-    {c:"土耳其",n:2,db:8.15,me:7.00},{c:"智利",n:2,db:7.45,me:6.00},
-    {c:"罗马尼亚",n:2,db:8.15,me:7.00},{c:"捷克",n:2,db:8.35,me:7.00},
-    {c:"巴西",n:1,db:9.00,me:10.00},{c:"俄罗斯",n:1,db:7.50,me:4.00},
-    {c:"冰岛",n:1,db:9.10,me:8.00},{c:"以色列",n:1,db:8.70,me:8.00},
-    {c:"塞尔维亚",n:1,db:8.50,me:6.00},{c:"古巴",n:1,db:8.00,me:8.00},
-    {c:"塞内加尔",n:1,db:7.40,me:4.00},{c:"拉脱维亚",n:1,db:8.50,me:4.00},
-    {c:"新加坡",n:1,db:7.40,me:8.00},{c:"爱沙尼亚",n:1,db:5.80,me:2.00},
-    {c:"马耳他",n:1,db:6.80,me:4.00}
+  var statsData = [
+    {c:'\u7f8e\u56fd',ce:'USA',n:612,db:8.09,me:6.80},{c:'\u65e5\u672c',ce:'Japan',n:217,db:8.50,me:6.70},
+    {c:'\u6cd5\u56fd',ce:'France',n:203,db:7.98,me:6.99},{c:'\u82f1\u56fd',ce:'UK',n:116,db:8.20,me:6.72},
+    {c:'\u4e2d\u56fd\u5927\u9646',ce:'Mainland China',n:110,db:7.63,me:5.98},{c:'\u610f\u5927\u5229',ce:'Italy',n:46,db:8.11,me:7.05},
+    {c:'\u4e2d\u56fd\u9999\u6e2f',ce:'Hong Kong',n:39,db:8.27,me:6.70},{c:'\u97e9\u56fd',ce:'South Korea',n:36,db:7.95,me:7.14},
+    {c:'\u82cf\u8054',ce:'USSR',n:29,db:8.69,me:7.15},{c:'\u4e2d\u56fd\u53f0\u6e7e',ce:'Taiwan',n:25,db:8.01,me:7.81},
+    {c:'\u745e\u5178',ce:'Sweden',n:24,db:8.11,me:7.30},{c:'\u897f\u73ed\u7259',ce:'Spain',n:23,db:8.06,me:7.39},
+    {c:'\u52a0\u62ff\u5927',ce:'Canada',n:22,db:7.42,me:6.20},{c:'\u5fb7\u56fd',ce:'Germany',n:22,db:8.12,me:6.76},
+    {c:'\u6ce2\u5170',ce:'Poland',n:16,db:8.14,me:7.00},{c:'\u897f\u5fb7',ce:'West Germany',n:12,db:8.48,me:8.40},
+    {c:'\u4e39\u9ea6',ce:'Denmark',n:12,db:7.73,me:6.55},{c:'\u4f0a\u6717',ce:'Iran',n:10,db:8.38,me:6.20},
+    {c:'\u6fb3\u5927\u5229\u4e9a',ce:'Australia',n:10,db:7.77,me:7.20},{c:'\u82ac\u5170',ce:'Finland',n:9,db:8.06,me:7.33},
+    {c:'\u6377\u514b\u65af\u6d1b\u4f10\u514b',ce:'Czechoslovakia',n:9,db:8.56,me:6.57},{c:'\u7231\u5c14\u5170',ce:'Ireland',n:8,db:7.72,me:6.75},
+    {c:'\u6bd4\u5229\u65f6',ce:'Belgium',n:8,db:7.85,me:7.50},{c:'\u6cf0\u56fd',ce:'Thailand',n:7,db:8.04,me:6.00},
+    {c:'\u963f\u6839\u5ef7',ce:'Argentina',n:7,db:8.24,me:7.00},{c:'\u5308\u7259\u5229',ce:'Hungary',n:6,db:8.28,me:7.00},
+    {c:'\u8377\u5170',ce:'Netherlands',n:6,db:7.47,me:6.50},{c:'\u5965\u5730\u5229',ce:'Austria',n:6,db:7.53,me:6.67},
+    {c:'\u5370\u5ea6',ce:'India',n:6,db:8.25,me:6.67},{c:'\u65b0\u897f\u5170',ce:'New Zealand',n:4,db:8.15,me:6.50},
+    {c:'\u5e0c\u814a',ce:'Greece',n:4,db:8.38,me:8.00},{c:'\u58a8\u897f\u54e5',ce:'Mexico',n:4,db:7.92,me:6.00},
+    {c:'\u8461\u8404\u7259',ce:'Portugal',n:3,db:6.63,me:4.67},{c:'\u745e\u58eb',ce:'Switzerland',n:3,db:8.00,me:8.00},
+    {c:'\u83f2\u5f8b\u5bbe',ce:'Philippines',n:3,db:7.23,me:4.67},{c:'\u54e5\u4f26\u6bd4\u4e9a',ce:'Colombia',n:2,db:7.75,me:7.00},
+    {c:'\u5357\u975e',ce:'South Africa',n:2,db:9.00,me:5.00},{c:'\u5357\u65af\u62c9\u592b',ce:'Yugoslavia',n:2,db:8.85,me:7.00},
+    {c:'\u571f\u8033\u5176',ce:'Turkey',n:2,db:8.15,me:7.00},{c:'\u667a\u5229',ce:'Chile',n:2,db:7.45,me:6.00},
+    {c:'\u7f57\u9a6c\u5c3c\u4e9a',ce:'Romania',n:2,db:8.15,me:7.00},{c:'\u6377\u514b',ce:'Czech Rep.',n:2,db:8.35,me:7.00},
+    {c:'\u5df4\u897f',ce:'Brazil',n:1,db:9.00,me:10.00},{c:'\u4fc4\u7f57\u65af',ce:'Russia',n:1,db:7.50,me:4.00},
+    {c:'\u51b0\u5c9b',ce:'Iceland',n:1,db:9.10,me:8.00},{c:'\u4ee5\u8272\u5217',ce:'Israel',n:1,db:8.70,me:8.00},
+    {c:'\u585e\u5c14\u7ef4\u4e9a',ce:'Serbia',n:1,db:8.50,me:6.00},{c:'\u53e4\u5df4',ce:'Cuba',n:1,db:8.00,me:8.00},
+    {c:'\u585e\u5185\u52a0\u5c14',ce:'Senegal',n:1,db:7.40,me:4.00},{c:'\u62c9\u8131\u7ef4\u4e9a',ce:'Latvia',n:1,db:8.50,me:4.00},
+    {c:'\u65b0\u52a0\u5761',ce:'Singapore',n:1,db:7.40,me:8.00},{c:'\u7231\u6c99\u5c3c\u4e9a',ce:'Estonia',n:1,db:5.80,me:2.00},
+    {c:'\u9a6c\u8033\u4ed6',ce:'Malta',n:1,db:6.80,me:4.00}
   ];
 
-  const distData = [
-    {score:'2★', val:2, count:24},
-    {score:'4★', val:4, count:173},
-    {score:'6★', val:6, count:625},
-    {score:'8★', val:8, count:653},
-    {score:'10★',val:10,count:99}
+  var distData = [
+    {score:'2\u2605',count:24},{score:'4\u2605',count:173},
+    {score:'6\u2605',count:625},{score:'8\u2605',count:653},{score:'10\u2605',count:99}
   ];
 
-  // ══════════════════════════════════════════════════
-  //  RENDER helpers
-  // ══════════════════════════════════════════════════
-  let currentLang = 'zh';
-  let chartInstance = null;
+  // ── State ──
+  var currentLang = 'zh';
+  var chartInstance = null;
+  var statsRendered = false;
 
+  // ── Helpers ──
   function linkHTML(film) {
-    return `<span class="ext-links">
-      <a href="${film.letterboxd}" target="_blank" rel="noopener" class="ext-link letterboxd" title="Letterboxd">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="8" cy="12" r="4" fill="none" stroke="#00e054" stroke-width="2"/>
-          <circle cx="16" cy="12" r="4" fill="none" stroke="#40bcf4" stroke-width="2"/>
-        </svg>
-      </a>
-      <a href="${film.imdb}" target="_blank" rel="noopener" class="ext-link imdb" title="IMDb">IMDb</a>
-    </span>`;
+    return '<span class="ext-links">'
+      + '<a href="' + film.letterboxd + '" target="_blank" rel="noopener" class="ext-link letterboxd" title="Letterboxd">'
+      + '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">'
+      + '<circle cx="8" cy="12" r="4" fill="none" stroke="#00e054" stroke-width="2"/>'
+      + '<circle cx="16" cy="12" r="4" fill="none" stroke="#40bcf4" stroke-width="2"/>'
+      + '</svg></a>'
+      + '<a href="' + film.imdb + '" target="_blank" rel="noopener" class="ext-link imdb" title="IMDb">IMDb</a>'
+      + '</span>';
   }
 
   function renderFilmTable() {
-    const tbody = document.getElementById('filmBody');
+    var tbody = document.getElementById('filmBody');
     tbody.innerHTML = '';
-    films.forEach((film, i) => {
-      const hasReview = film.reviewZh || film.reviewEn;
-      const genres = currentLang === 'zh' ? film.genreZh : film.genreEn;
-      const genreHTML = genres.map(g => `<span class="genre-tag">${g}</span>`).join('');
-      const title = currentLang === 'zh' ? film.zh : film.en;
-      const dir = currentLang === 'zh' ? film.dirZh : film.dirEn;
-      const tr = document.createElement('tr');
+    films.forEach(function(film, i) {
+      var hasReview = film.reviewZh || film.reviewEn;
+      var genres = currentLang === 'zh' ? film.genreZh : film.genreEn;
+      var genreHTML = genres.map(function(g){ return '<span class="genre-tag">' + g + '</span>'; }).join('');
+      var title = currentLang === 'zh' ? film.zh : film.en;
+      var dir = currentLang === 'zh' ? film.dirZh : film.dirEn;
+      var tr = document.createElement('tr');
       tr.className = 'film-row' + (hasReview ? ' has-review' : '');
-      tr.dataset.index = i;
-      tr.innerHTML = `<td>${title}</td><td>${dir}</td><td>${film.year}</td><td>${genreHTML}</td><td class="rating">${film.rating}</td><td>${linkHTML(film)}</td>`;
+      tr.innerHTML = '<td>' + title + '</td><td>' + dir + '</td><td>' + film.year + '</td><td>' + genreHTML + '</td><td class="rating">' + film.rating + '</td><td>' + linkHTML(film) + '</td>';
       tbody.appendChild(tr);
       if (hasReview) {
-        const reviewTr = document.createElement('tr');
+        var reviewTr = document.createElement('tr');
         reviewTr.className = 'review-row';
-        reviewTr.id = 'review-' + i;
-        const review = currentLang === 'zh' ? film.reviewZh : film.reviewEn;
-        reviewTr.innerHTML = `<td colspan="6"><div class="review-expand" id="expand-${i}"><div class="review-expand-inner"><p>${review.replace(/\n/g,'<br>')}</p><div class="review-rating">${film.rating}</div></div></div></td>`;
+        var review = currentLang === 'zh' ? film.reviewZh : film.reviewEn;
+        reviewTr.innerHTML = '<td colspan="6"><div class="review-expand" id="expand-' + i + '"><div class="review-expand-inner"><p>' + review.replace(/\n/g,'<br>') + '</p><div class="review-rating">' + film.rating + '</div></div></div></td>';
         tbody.appendChild(reviewTr);
-        tr.addEventListener('click', (e) => {
-          if (e.target.closest('a')) return;
-          document.getElementById('expand-' + i).classList.toggle('open');
-          tr.classList.toggle('expanded');
-        });
+        (function(idx, row){ row.addEventListener('click', function(e){ if(e.target.closest('a')) return; document.getElementById('expand-'+idx).classList.toggle('open'); row.classList.toggle('expanded'); }); })(i, tr);
       }
     });
   }
 
   function renderTop10() {
-    const ol = document.getElementById('topList');
+    var ol = document.getElementById('topList');
     ol.innerHTML = '';
-    top10Films.forEach((film) => {
-      const li = document.createElement('li');
+    top10Films.forEach(function(film) {
+      var li = document.createElement('li');
       li.className = 'top-item';
-      const title = currentLang === 'zh' ? film.zh : film.en;
-      const dirShort = currentLang === 'zh'
-        ? film.dirZh.split('·').pop().trim()
-        : film.dirEn.split(' ').pop();
-      li.innerHTML = `<div class="top-info"><h4>${title}</h4><span>${dirShort} · ${film.year}</span></div><div class="top-links">${linkHTML(film)}</div>`;
+      var title = currentLang === 'zh' ? film.zh : film.en;
+      var dirShort = currentLang === 'zh' ? film.dirZh.split('\u00b7').pop().trim() : film.dirEn.split(' ').pop();
+      li.innerHTML = '<div class="top-info"><h4>' + title + '</h4><span>' + dirShort + ' \u00b7 ' + film.year + '</span></div><div class="top-links">' + linkHTML(film) + '</div>';
       ol.appendChild(li);
     });
   }
 
   function renderDist() {
-    const wrap = document.getElementById('distBars');
-    const maxCount = Math.max(...distData.map(d => d.count));
-    wrap.innerHTML = distData.map(d => {
-      const pct = (d.count / maxCount * 100).toFixed(1);
-      return `<div class="dist-row">
-        <div class="dist-label">${d.score}</div>
-        <div class="dist-bar-wrap"><div class="dist-bar" style="width:${pct}%"></div></div>
-        <div class="dist-count">${d.count}</div>
-      </div>`;
+    var wrap = document.getElementById('distBars');
+    var maxCount = Math.max.apply(null, distData.map(function(d){ return d.count; }));
+    wrap.innerHTML = distData.map(function(d){
+      var pct = (d.count / maxCount * 100).toFixed(1);
+      return '<div class="dist-row"><div class="dist-label">' + d.score + '</div><div class="dist-bar-wrap"><div class="dist-bar" style="width:' + pct + '%"></div></div><div class="dist-count">' + d.count + '</div></div>';
     }).join('');
   }
 
   function renderChart() {
-    const filtered = statsData.filter(d => d.n >= 10);
-    const labels = filtered.map(d => d.c);
-    const dbVals = filtered.map(d => d.db);
-    const meVals = filtered.map(d => d.me);
-
-    if (chartInstance) { chartInstance.destroy(); }
-    const ctx = document.getElementById('countryChart').getContext('2d');
+    var filtered = statsData.filter(function(d){ return d.n >= 10; });
+    var labels = filtered.map(function(d){ return currentLang === 'en' ? d.ce : d.c; });
+    var dbVals = filtered.map(function(d){ return d.db; });
+    var meVals = filtered.map(function(d){ return d.me; });
+    if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+    var ctx = document.getElementById('countryChart').getContext('2d');
     chartInstance = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels,
+        labels: labels,
         datasets: [
-          { label: '豆瓣均分', data: dbVals, backgroundColor: '#3c8de8', borderWidth: 0 },
-          { label: '我的均分(×2)', data: meVals, backgroundColor: '#f5c518', borderWidth: 0 }
+          {label: currentLang==='zh'?'豆瓣\u5747\u5206':'Douban avg', data: dbVals, backgroundColor: '#3c8de8', borderWidth: 0},
+          {label: currentLang==='zh'?'\u6211\u7684\u5747\u5206(x2)':'My avg(x2)', data: meVals, backgroundColor: '#f5c518', borderWidth: 0}
         ]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
+        responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
-          x: {
-            ticks: { color: '#888', font: { size: 10, family: 'Silkscreen' }, maxRotation: 40, autoSkip: false },
-            grid: { color: '#1a1a1a' }
-          },
-          y: {
-            min: 5, max: 10,
-            ticks: { color: '#888', font: { size: 10 }, stepSize: 1 },
-            grid: { color: '#1a1a1a' }
-          }
+          x: { ticks: { color: '#888', font: { size: 10 }, maxRotation: 40, autoSkip: false }, grid: { color: '#1a1a1a' } },
+          y: { min: 5, max: 10, ticks: { color: '#888', font: { size: 10 }, stepSize: 1 }, grid: { color: '#1a1a1a' } }
         }
       }
     });
   }
 
   function renderStatsTable() {
-    const tbody = document.getElementById('statsBody');
-    const labelC = currentLang === 'zh' ? '国家/地区' : 'Country';
-    const labelN = currentLang === 'zh' ? '影片数' : 'Films';
-    const labelDb = currentLang === 'zh' ? '豆瓣均分' : 'Douban avg';
-    const labelMe = currentLang === 'zh' ? '我的均分(×2)' : 'My avg(×2)';
-    const labelGap = currentLang === 'zh' ? '分差' : 'Gap';
+    var thLabels = currentLang === 'zh'
+      ? ['\u56fd\u5bb6/\u5730\u533a', '\u5f71\u7247\u6570', '豆瓣\u5747\u5206', '\u6211\u7684\u5747\u5206(x2)', '\u5206\u5dee']
+      : ['Country', 'Films', 'Douban avg', 'My avg(x2)', 'Gap'];
+    var ids = ['thCountry','thFilms','thDb','thMe','thGap'];
+    ids.forEach(function(id, i){ document.getElementById(id).textContent = thLabels[i]; });
 
-    document.querySelectorAll('#statsTable th').forEach((th, i) => {
-      th.textContent = [labelC, labelN, labelDb, labelMe, labelGap][i] || th.textContent;
-    });
-
-    tbody.innerHTML = statsData.map((d, i) => {
-      const gap = (d.db - d.me).toFixed(2);
-      const gapClass = parseFloat(gap) <= 0 ? 'gap-neg' : 'gap-pos';
-      const gapStr = parseFloat(gap) > 0 ? '+' + gap : gap;
-      const bg = i % 2 !== 0 ? 'background:#0e0e0e;' : '';
-      const meStr = d.me != null ? d.me.toFixed(2) : '—';
-      return `<tr style="${bg}">
-        <td>${d.c}</td>
-        <td class="num">${d.n}</td>
-        <td class="num score-db">${d.db.toFixed(2)}</td>
-        <td class="num score-me">${meStr}</td>
-        <td class="num ${gapClass}">${gapStr}</td>
-      </tr>`;
+    document.getElementById('statsBody').innerHTML = statsData.map(function(d, i) {
+      var gap = (d.db - d.me).toFixed(2);
+      var gapClass = parseFloat(gap) <= 0 ? 'gap-neg' : 'gap-pos';
+      var gapStr = parseFloat(gap) > 0 ? '+' + gap : gap;
+      var bg = i % 2 !== 0 ? 'background:#0e0e0e;' : '';
+      var name = currentLang === 'en' ? d.ce : d.c;
+      var meStr = d.me != null ? d.me.toFixed(2) : '\u2014';
+      return '<tr style="' + bg + '"><td>' + name + '</td><td class="num">' + d.n + '</td><td class="num score-db">' + d.db.toFixed(2) + '</td><td class="num score-me">' + meStr + '</td><td class="num ' + gapClass + '">' + gapStr + '</td></tr>';
     }).join('');
   }
 
@@ -988,14 +619,14 @@
     renderStatsTable();
   }
 
-  // ── Sprocket Holes ──
+  // ── Sprockets ──
   function fillSprockets() {
-    const strips = document.querySelectorAll('.sprocket-strip');
-    const count = Math.ceil(window.innerHeight / 30);
-    strips.forEach(strip => {
+    var strips = document.querySelectorAll('.sprocket-strip');
+    var count = Math.ceil(window.innerHeight / 30);
+    strips.forEach(function(strip) {
       strip.innerHTML = '';
-      for (let i = 0; i < count; i++) {
-        const hole = document.createElement('div');
+      for (var i = 0; i < count; i++) {
+        var hole = document.createElement('div');
         hole.className = 'sprocket-hole';
         strip.appendChild(hole);
       }
@@ -1004,14 +635,13 @@
   fillSprockets();
   window.addEventListener('resize', fillSprockets);
 
-  // ── Tab Navigation ──
-  const tabs = document.querySelectorAll('.nav-tab');
-  const panels = document.querySelectorAll('.tab-panel');
-  let statsRendered = false;
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
+  // ── Tabs ──
+  var tabs = document.querySelectorAll('.nav-tab');
+  var panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
       tab.classList.add('active');
       document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
       if (tab.dataset.tab === 'stats' && !statsRendered) {
@@ -1021,30 +651,33 @@
     });
   });
 
-  // ── Language Switch ──
+  // ── Language switch ──
   function switchLang(lang) {
     currentLang = lang;
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.textContent.trim() === (lang === 'zh' ? '中文' : 'EN'));
-    });
+    document.getElementById('btnZh').classList.toggle('active', lang === 'zh');
+    document.getElementById('btnEn').classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
-    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-      const val = el.getAttribute('data-' + lang);
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = val;
-      } else {
-        el.innerHTML = val;
-      }
+    document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
+      var val = el.getAttribute('data-' + lang);
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') { el.placeholder = val; }
+      else { el.innerHTML = val; }
     });
     renderFilmTable();
     renderTop10();
-    if (statsRendered) renderStatsTable();
+    if (statsRendered) { renderStatsTable(); renderChart(); }
   }
 
-  // ── Initial Render ──
+  document.getElementById('btnZh').addEventListener('click', function(){ switchLang('zh'); });
+  document.getElementById('btnEn').addEventListener('click', function(){ switchLang('en'); });
+
+  // ── Tab label i18n on lang switch (re-apply nav tab labels) ──
+  // Already handled via data-zh/data-en attributes on nav buttons above.
+
+  // ── Init ──
   renderFilmTable();
   renderTop10();
-</script>
 
+})();
+</script>
 </body>
 </html>
